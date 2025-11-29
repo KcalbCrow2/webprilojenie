@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <h2>Политические координаты</h2>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">ЗДАРОВА ДРУГ ПРИВЕТ ПРИВЕЕЕЕЕЕТ {{ current_user.username }}</h5>
+                <p class="card-text">Мыло: {{ current_user.email }}</p>
+                <p class="card-text">Нашагал: {{ today_steps }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h3>Сводка данных</h3>
+        <div class="list-group">
+            <a href="{{ url_for('current_week') }}" class="list-group-item list-group-item-action">
+                Неделя
+            </a>
+            <a href="{{ url_for('current_month') }}" class="list-group-item list-group-item-action">
+                Месяц
+            </a>
+            <a href="{{ url_for('current_quarter') }}" class="list-group-item list-group-item-action">
+                Четверь года
+            </a>
+            <a href="{{ url_for('current_year') }}" class="list-group-item list-group-item-action">
+                Год
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

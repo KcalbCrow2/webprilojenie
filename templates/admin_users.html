@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Юзер менеджмент</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Юзя</th>
+                    <th>Мыло</th>
+                    <th>Хэш пароля</th>
+                    <th>Шаги (за неделю) </th>
+                    <th>Дней активности</th>
+                    <th>Подробно</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td><small>{{ user.password_hash[:20] }}...</small></td>
+                    <td>{{ user.total_steps_week }}</td>
+                    <td>{{ user.records_count }}</td>
+                    <td>
+                        <a href="{{ url_for('admin_user_detail', user_id=user.id) }}" class="btn btn-sm btn-info">тык</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="{{ url_for('admin_stats') }}" class="btn btn-primary">Статистика сайта</a>
+</div>
+{% endblock %}

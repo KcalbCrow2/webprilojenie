@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2>Хвастайся</h2>
+        <p>Дароу, {{ current_user.username }}!</p>
+        <form method="POST">
+            <div class="mb-3">
+                <label for="steps" class="form-label">Кол-во шагов</label>
+                <input type="number" class="form-control" id="steps" name="steps" min="0" required>
+            </div>
+            <div class="mb-3">
+                <label for="date" class="form-label">Дата (по дефолту ставиться на сегодня но можно выбрать дату)</label>
+                <input type="date" class="form-control" id="date" name="date">
+            </div>
+            <button type="submit" class="btn btn-success">Отправить</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Данные пользователя: {{ user.username }}</h2>
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Инфа</h5>
+            <p><strong>ID:</strong> {{ user.id }}</p>
+            <p><strong>Мыло:</strong> {{ user.email }}</p>
+            <p><strong>Хэш пароля:</strong> <small>{{ user.password_hash }}</small></p>
+        </div>
+    </div>
+    
+    <h3>Записи</h3>
+    {% if step_records %}
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Шаги</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in step_records %}
+                <tr>
+                    <td>{{ record.date }}</td>
+                    <td>{{ record.steps }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p>Нету нихуя.</p>
+    {% endif %}
+    
+    <a href="{{ url_for('admin_users') }}" class="btn btn-primary">Обратно к списку</a>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Общая статистика</h2>
+    
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Всего пользователей</h5>
+                    <p class="card-text display-4">{{ total_users }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Всего записей шагов</h5>
+                    <p class="card-text display-4">{{ total_step_records }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h3>Самые самые (за неделю)</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Позиция</th>
+                <th>Юзер</th>
+                <th>Всего шагов</th>
+                <th>Стабильно за день</th>
+                <th>Дней активности</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in user_stats %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.total_steps }}</td>
+                <td>{{ user.avg_steps }}</td>
+                <td>{{ user.days_active }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <a href="{{ url_for('admin_users') }}" class="btn btn-primary">Обратно к списку</a>
+</div>
+{% endblock %}
