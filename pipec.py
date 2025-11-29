@@ -145,9 +145,9 @@ def submit_steps():
                 db.session.add(new_record)
             
             db.session.commit()
-            flash('Steps submitted successfully!')
+            flash('Добавлено!')
         else:
-            flash('Please enter a valid number of steps')
+            flash('Шаги введи')
     
     return render_template('submit_steps.html')
 
@@ -395,3 +395,4 @@ if __name__ == '__main__':
 
 
     
+
